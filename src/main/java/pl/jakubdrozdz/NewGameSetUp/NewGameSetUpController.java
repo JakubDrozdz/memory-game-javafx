@@ -1,9 +1,10 @@
-package pl.jakubdrozdz.NewGame;
+package pl.jakubdrozdz.NewGameSetUp;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.jakubdrozdz.NewGame.NewGameView;
 
 
 public class NewGameSetUpController {
@@ -15,5 +16,12 @@ public class NewGameSetUpController {
                 stage.setTitle("Memory Game");
             }
         });
+        NewGameSetUpView.setDimension.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                new NewGameView(stage,homeScene);
+            }
+        });
     }
+
 }
