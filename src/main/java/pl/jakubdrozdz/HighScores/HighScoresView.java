@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -16,11 +17,21 @@ public class HighScoresView implements IBasicWindow {
     static Button btn;
     StackPane sp;
     Label label;
+    VBox panel;
+    TableView table;
     public HighScoresView(Stage stage, Scene scene) {
+        stage.setTitle("High Scores");
         basicSetUp(scene);
         new HighScoresController(stage,homeScene);
-        label = new Label("High Scores");
-        menu.getChildren().add(label);
+        panel = new VBox();
+        panel.setAlignment(Pos.CENTER);
+        label = new Label("Leaderboard");
+        label.setAlignment(Pos.CENTER);
+        panel.getChildren().add(label);
+        table = new TableView<>();
+        panel.getChildren().add(table);
+        panel.setSpacing(15);
+        menu.getChildren().add(panel);
         setScene(stage);
     }
 

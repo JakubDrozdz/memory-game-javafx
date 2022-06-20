@@ -12,6 +12,7 @@ public class NewGameSetUpController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 stage.setScene(homeScene);
+                stage.setTitle("Memory Game");
             }
         });
     }

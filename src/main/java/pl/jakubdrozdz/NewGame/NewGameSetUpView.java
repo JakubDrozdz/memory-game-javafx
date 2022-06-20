@@ -24,6 +24,7 @@ public class NewGameSetUpView implements IBasicWindow {
     StackPane sp;
     Scene homeScene;
     public NewGameSetUpView(Stage stage, Scene scene){
+        stage.setTitle("New Game - set up");
         basicSetUp(scene);
         new NewGameSetUpController(stage,homeScene);
 

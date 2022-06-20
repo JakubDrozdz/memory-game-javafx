@@ -34,7 +34,7 @@ public class HomeScreenView {
         sp = new StackPane();
         sp.getChildren().add(menu);
         scene = new Scene(sp, 640, 480);
-
+        stage.setTitle("Memory Game");
     }
 
     public Scene getScene() {
