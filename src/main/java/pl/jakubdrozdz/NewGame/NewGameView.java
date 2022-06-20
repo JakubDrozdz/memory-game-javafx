@@ -14,11 +14,14 @@ public class NewGameView implements IBasicWindow {
     protected static Button btn;
     Scene homeScene;
     StackPane sp;
+    static Button b;
     public NewGameView(Stage stage, Scene scene) {
         stage.setTitle("Game");
         basicSetUp(scene);
+        b = new Button();
+        menu.getChildren().add(b);
         setScene(stage);
-        new NewGameController(stage,homeScene);
+        new NewGameController(stage,homeScene,menu);
     }
 
     @Override
