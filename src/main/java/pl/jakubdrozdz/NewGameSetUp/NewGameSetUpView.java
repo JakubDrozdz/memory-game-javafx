@@ -1,4 +1,4 @@
-package pl.jakubdrozdz.NewGame;
+package pl.jakubdrozdz.NewGameSetUp;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
+import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpController;
 
 public class NewGameSetUpView implements IBasicWindow {
     VBox menu;
@@ -20,13 +21,13 @@ public class NewGameSetUpView implements IBasicWindow {
     Label l;
     TextField tf1;
     TextField tf2;
-    Button setDimension;
+    protected static Button setDimension;
     StackPane sp;
     Scene homeScene;
     public NewGameSetUpView(Stage stage, Scene scene){
         stage.setTitle("New Game - set up");
         basicSetUp(scene);
-        new NewGameSetUpController(stage,homeScene);
+
 
         panel = new VBox();
         panel.setAlignment(Pos.CENTER);
@@ -50,6 +51,7 @@ public class NewGameSetUpView implements IBasicWindow {
         menu.getChildren().add(panel);
 
         setScene(stage);
+        new NewGameSetUpController(stage,homeScene);
     }
 
     @Override

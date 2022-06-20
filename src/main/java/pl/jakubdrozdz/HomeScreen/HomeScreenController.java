@@ -5,8 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.HighScores.HighScoresView;
-import pl.jakubdrozdz.NewGame.NewGameSetUpController;
-import pl.jakubdrozdz.NewGame.NewGameSetUpView;
+import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpView;
 import static pl.jakubdrozdz.HomeScreen.HomeScreenView.scene;
 
 public class HomeScreenController {
