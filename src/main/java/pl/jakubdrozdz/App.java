@@ -11,9 +11,7 @@ import pl.jakubdrozdz.HomeScreen.HomeScreenController;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) {
-        new HomeScreenController(stage);
-    }
+    public void start(Stage stage) {new HomeScreenController(stage);}
 
     public static void main(String[] args) {
         launch();

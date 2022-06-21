@@ -32,9 +32,12 @@ public class NewGameSetUpController implements IBasicController {
         newGameSetUpView.setDimension.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if(true){
+                String tf1 = newGameSetUpView.tf1.getText();
+                String tf2 = newGameSetUpView.tf2.getText();
+                if(newGameSetUpModel.checkDimension(tf1,tf2,newGameSetUpView.l)){
                     new NewGameController(stage,homeScene);
                 }
+
             }
         });
     }

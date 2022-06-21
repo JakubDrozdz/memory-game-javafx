@@ -1,10 +1,12 @@
 package pl.jakubdrozdz.NewGame;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import pl.jakubdrozdz.Interfaces.IBasicController;
 
 public class NewGameController implements IBasicController {
@@ -18,6 +20,12 @@ public class NewGameController implements IBasicController {
         newGameView.setScene(stage);
         buttonsController(stage,homeScene);
         newGameView.menu.getChildren().add(textTime);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                newGameModel.interrupt();
+            }
+        });
     }
 
     @Override
