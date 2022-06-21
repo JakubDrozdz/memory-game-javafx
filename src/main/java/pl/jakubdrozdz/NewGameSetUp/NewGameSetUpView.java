@@ -35,6 +35,10 @@ public class NewGameSetUpView implements IBasicWindow {
         fields.setSpacing(10);
         fields.setAlignment(Pos.CENTER);
         l = new Label("Enter dimension");
+        l.setMaxWidth(300);
+        l.setAlignment(Pos.CENTER);
+        l.setWrapText(true);
+        l.setMaxHeight(250);
         tf1 = new TextField();
         tf2 = new TextField();
 
