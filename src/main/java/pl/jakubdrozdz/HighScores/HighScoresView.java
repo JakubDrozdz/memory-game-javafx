@@ -22,7 +22,6 @@ public class HighScoresView implements IBasicWindow {
     public HighScoresView(Stage stage, Scene scene) {
         stage.setTitle("High Scores");
         basicSetUp(scene);
-        new HighScoresController(stage,homeScene);
         panel = new VBox();
         panel.setAlignment(Pos.CENTER);
         label = new Label("Leaderboard");
@@ -32,7 +31,6 @@ public class HighScoresView implements IBasicWindow {
         panel.getChildren().add(table);
         panel.setSpacing(15);
         menu.getChildren().add(panel);
-        setScene(stage);
     }
 
     @Override

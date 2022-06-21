@@ -15,19 +15,18 @@ import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpController;
 
 public class NewGameSetUpView implements IBasicWindow {
     VBox menu;
-    protected static Button btn;
+    Button btn;
     VBox panel;
     HBox fields;
     Label l;
     TextField tf1;
     TextField tf2;
-    protected static Button setDimension;
+    Button setDimension;
     StackPane sp;
     Scene homeScene;
     public NewGameSetUpView(Stage stage, Scene scene){
         stage.setTitle("New Game - set up");
         basicSetUp(scene);
-
 
         panel = new VBox();
         panel.setAlignment(Pos.CENTER);
@@ -49,9 +48,6 @@ public class NewGameSetUpView implements IBasicWindow {
         panel.getChildren().add(setDimension);
 
         menu.getChildren().add(panel);
-
-        setScene(stage);
-        new NewGameSetUpController(stage,homeScene);
     }
 
     @Override

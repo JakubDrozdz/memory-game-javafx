@@ -11,17 +11,14 @@ import pl.jakubdrozdz.Interfaces.IBasicWindow;
 
 public class NewGameView implements IBasicWindow {
     VBox menu;
-    protected static Button btn;
+    Button btn;
     Scene homeScene;
     StackPane sp;
-    static Button b;
+    Button b;
     public NewGameView(Stage stage, Scene scene) {
-        stage.setTitle("Game");
         basicSetUp(scene);
         b = new Button();
         menu.getChildren().add(b);
-        setScene(stage);
-        new NewGameController(stage,homeScene,menu);
     }
 
     @Override
@@ -39,5 +36,6 @@ public class NewGameView implements IBasicWindow {
         sp = new StackPane(menu);
         sp.setPadding(new Insets(20));
         stage.setScene(new Scene(sp,600,200));
+        stage.setTitle("Game");
     }
 }
