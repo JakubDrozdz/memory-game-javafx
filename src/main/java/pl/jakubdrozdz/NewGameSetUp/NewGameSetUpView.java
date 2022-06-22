@@ -11,7 +11,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
-import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpController;
 
 public class NewGameSetUpView implements IBasicWindow {
     VBox menu;

@@ -4,10 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pl.jakubdrozdz.HomeScreen.HomeScreenView;
 import pl.jakubdrozdz.Interfaces.IBasicController;
 import pl.jakubdrozdz.NewGame.NewGameController;
-import pl.jakubdrozdz.NewGame.NewGameView;
 
 
 public class NewGameSetUpController implements IBasicController {
@@ -39,7 +37,7 @@ public class NewGameSetUpController implements IBasicController {
                 String tf2 = newGameSetUpView.tf2.getText();
                 String res = newGameSetUpModel.checkDimension(tf1,tf2);
                 if(res.equals("")){
-                    new NewGameController(stage,homeScene);
+                    new NewGameController(stage,homeScene, newGameSetUpModel.v1,newGameSetUpModel.v2);
                 }
                 newGameSetUpView.l.setText(res);
                 stage.setHeight(250);

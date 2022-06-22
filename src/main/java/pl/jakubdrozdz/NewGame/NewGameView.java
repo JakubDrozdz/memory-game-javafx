@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -15,10 +16,12 @@ public class NewGameView implements IBasicWindow {
     Scene homeScene;
     StackPane sp;
     Button b;
+    GridPane board;
     public NewGameView(Stage stage, Scene scene) {
         basicSetUp(scene);
         b = new Button();
         menu.getChildren().add(b);
+        menu.getChildren().add(board);
     }
 
     @Override
@@ -29,6 +32,7 @@ public class NewGameView implements IBasicWindow {
         btn = new Button("Back to menu");
         menu.getChildren().add(btn);
         menu.setSpacing(20);
+        board=new GridPane();
     }
 
     @Override
