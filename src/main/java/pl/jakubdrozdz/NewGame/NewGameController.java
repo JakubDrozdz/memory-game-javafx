@@ -50,6 +50,7 @@ public class NewGameController implements IBasicController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 newGameModel.interrupt();
+                stopActions();
             }
         });
     }
@@ -75,52 +76,26 @@ public class NewGameController implements IBasicController {
             }
         }
     }
+    public void stopActions(){
+        for (int i = 0; i < newGameModel.boardButtons.size(); i++) {
+            for (int j = 0; j < newGameModel.boardButtons.get(i).size(); j++) {
+                int finalI = i;
+                int finalJ = j;
+                newGameModel.boardButtons.get(i).get(j).setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                    }
+                });
+            }
+        }
+    }
     public void setPairs(){
         for (int i = 0; i < newGameModel.pairs.length; i++) {
             String fileName = "";
             fileName = newGameModel.imagesNames.get((int)(Math.random() * newGameModel.imagesNames.size()));
             for (int j = 0; j < newGameModel.pairs[i].length; j++) {
-                //newGameModel.images.put(fileName, newGameModel.images.get(fileName) + 1);
-                //newGameModel.boardButtons.get(i).get(j).setImageName(fileName);
                 newGameModel.pairs[i][j].setImageName(fileName);
                 System.out.println("Setting " + newGameModel.pairs[i][j] + " with img "+ fileName);
-            }
-        }
-    }
-    public void setFrontCard(){
-        for (int i = 0; i < newGameModel.boardButtons.size(); i++) {
-            for (int j = 0; j < newGameModel.boardButtons.get(i).size(); j++) {
-                int finalI = i;
-                int finalJ = j;
-                newGameModel.pairs[i][j].setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        /*InputStream stream = null;
-                        String filepath = "src/resources/"+ newGameModel.pairs[finalI][finalJ].getImageName() +".jpg";
-                        try {
-                            stream = new FileInputStream(filepath);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        Image img = new Image(stream);
-                        ImageView view = new ImageView(img);
-                        view.setFitHeight(120);
-                        view.setFitWidth(120);
-                        newGameModel.pairs[finalI][finalJ].setGraphic(view);*/
-                        InputStream stream = null;
-                        String filepath = "src/resources/img"+ 1 +".jpg";
-                        try {
-                            stream = new FileInputStream(filepath);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        Image img = new Image(stream);
-                        ImageView view = new ImageView(img);
-                        view.setFitHeight(120);
-                        view.setFitWidth(120);
-                        newGameModel.boardButtons.get(finalI).get(finalJ).setGraphic(view);
-                    }
-                });
             }
         }
     }
