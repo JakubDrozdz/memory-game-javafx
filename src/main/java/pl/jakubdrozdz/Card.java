@@ -10,8 +10,12 @@ import java.io.InputStream;
 
 public class Card extends Button {
     private String imageName;
+    private boolean isReversed;
+    private ImageView view;
     public Card(){
+        this.isReversed = false;
         this.imageName = "back";
+        this.view = new ImageView();
         InputStream stream = null;
         try {
             stream = new FileInputStream("src/resources/back.jpg");
@@ -31,5 +35,21 @@ public class Card extends Button {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    public boolean isReversed() {
+        return isReversed;
+    }
+
+    public void setReversed(boolean reversed) {
+        isReversed = reversed;
+    }
+
+    public ImageView getView() {
+        return view;
+    }
+
+    public void setView(ImageView view) {
+        this.view = view;
     }
 }

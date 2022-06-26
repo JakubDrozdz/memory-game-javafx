@@ -15,12 +15,12 @@ public class NewGameView implements IBasicWindow {
     Button btn;
     Scene homeScene;
     StackPane sp;
-    Button b;
+    Button save;
     GridPane board;
     public NewGameView(Stage stage, Scene scene) {
         basicSetUp(scene);
-        b = new Button();
-        menu.getChildren().add(b);
+        save = new Button("Save score");
+        menu.getChildren().add(save);
         menu.getChildren().add(board);
     }
 

@@ -6,10 +6,9 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.HighScores.HighScoresController;
-import pl.jakubdrozdz.HighScores.HighScoresView;
 import pl.jakubdrozdz.Interfaces.IBasicController;
 import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpController;
-import pl.jakubdrozdz.NewGameSetUp.NewGameSetUpView;
+
 import static pl.jakubdrozdz.HomeScreen.HomeScreenView.scene;
 
 public class HomeScreenController implements IBasicController {
@@ -31,9 +30,7 @@ public class HomeScreenController implements IBasicController {
         });
         HomeScreenView.highScores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) {
-                new HighScoresController(stage,scene);
-            }
+            public void handle(ActionEvent actionEvent) { new HighScoresController(stage,scene); }
         });
         HomeScreenView.exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override

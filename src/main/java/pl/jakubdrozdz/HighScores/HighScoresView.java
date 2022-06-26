@@ -5,11 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
+import pl.jakubdrozdz.Player;
 
 public class HighScoresView implements IBasicWindow {
     Scene homeScene;
@@ -18,7 +21,11 @@ public class HighScoresView implements IBasicWindow {
     StackPane sp;
     Label label;
     VBox panel;
-    TableView table;
+     TableView<Player> table;
+    TableColumn<Player,String> nameCol;
+    TableColumn<Player,Double> pointsCol;
+    TableColumn<Player,Integer> firstTriesCol;
+    TableColumn<Player,Double> totalCol;
     public HighScoresView(Stage stage, Scene scene) {
         stage.setTitle("High Scores");
         basicSetUp(scene);
@@ -27,10 +34,17 @@ public class HighScoresView implements IBasicWindow {
         label = new Label("Leaderboard");
         label.setAlignment(Pos.CENTER);
         panel.getChildren().add(label);
-        table = new TableView<>();
-        panel.getChildren().add(table);
         panel.setSpacing(15);
         menu.getChildren().add(panel);
+
+        table = new TableView<Player>();
+        panel.getChildren().add(table);
+        nameCol = new TableColumn<>("Name");
+        pointsCol = new TableColumn<>("Points");
+        firstTriesCol = new TableColumn<>("First tries");
+        totalCol = new TableColumn<>("Total");
+
+        setScene(stage);
     }
 
     @Override

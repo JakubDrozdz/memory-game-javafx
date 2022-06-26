@@ -16,6 +16,8 @@ public class NewGameModel {
     ArrayList<String> imagesNames;
     Card[][] pairs;
     int noOfPairs;
+    Thread thread;
+    private volatile boolean threadEnd = false;
     public NewGameModel(Text textTime, int dim1,int dim2) {
         this.textTime=textTime;
         this.startTime=LocalDateTime.now();
@@ -29,6 +31,7 @@ public class NewGameModel {
         timer.start();
         setUpButtons();
         createPairs();
+        checkCards();
         thread.start();
     }
     private volatile boolean timerEnd = false;
@@ -49,27 +52,28 @@ public class NewGameModel {
                 }
             }
     );
-    private volatile boolean threadEnd = false;
-    Thread thread = new Thread(
-            ()->{
-                while(!threadEnd){
-                    Platform.runLater(
-                            ()->{
-                                System.out.println(boardButtons.get(0).get(0).getImageName().equals(
-                                        boardButtons.get(1).get(0).getImageName()
-                                ));
-                            }
-                    );
+    public void checkCards(){
+        thread = new Thread(
+                ()->{
+                    while(!threadEnd){
+                        Platform.runLater(
+                                ()->{
+                                    //System.out.println(boardButtons.get(0).get(0).getImageName().equals(
+                                    //        boardButtons.get(1).get(0).getImageName()
+                                    //));
+                                }
+                        );
 
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e=new InterruptedException("Game stopped");
-                        System.out.println(e.getMessage());
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e=new InterruptedException("Game stopped");
+                            System.out.println(e.getMessage());
+                        }
                     }
                 }
-            }
-    );
+        );
+    }
     public void interrupt(){
         timerEnd = true;
         timer.interrupt();
