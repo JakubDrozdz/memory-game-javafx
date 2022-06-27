@@ -1,22 +1,12 @@
 package pl.jakubdrozdz.HighScores;
 
-import javafx.beans.Observable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import pl.jakubdrozdz.Player;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class HighScoresModel {
-    //private ObservableList<Player> playerList;
     public HighScoresModel() {
-        //playerList = FXCollections.observableArrayList(
-        //        new Player("Jan",12.12,2,14.12)
-        //);
     }
     public String[][] readFile(){
         String[][] playerData = null;
@@ -41,9 +31,19 @@ public class HighScoresModel {
         catch(IOException e){
             System.out.println("Read error");
         }
-        //for (int i = 1; i < playerData.length; i++) {
-            //playerList.add(new Player(playerData[i][0],Double.parseDouble(playerData[i][1]),Integer.parseInt(playerData[i][2]),Double.parseDouble(playerData[i][3])));
-        //}
         return playerData;
+    }
+    public String[][] sort(String[][] data){
+
+        for (int i=1;i<data.length;++i){
+            for(int j=1;j<data.length-i; ++j){
+                if(Double.parseDouble(data[j+1][3])>Double.parseDouble(data[j][3])){
+                    String[] tmp = data[j];
+                    data[j] = data[j+1];
+                    data[j+1] = tmp;
+                }
+            }
+        }
+        return data;
     }
 }

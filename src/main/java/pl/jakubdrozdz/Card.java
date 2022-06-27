@@ -12,7 +12,9 @@ public class Card extends Button {
     private String imageName;
     private boolean isReversed;
     private ImageView view;
+    private int clicked;
     public Card(){
+        this.clicked = 0;
         this.isReversed = false;
         this.imageName = "back";
         this.view = new ImageView();
@@ -51,5 +53,13 @@ public class Card extends Button {
 
     public void setView(ImageView view) {
         this.view = view;
+    }
+
+    public int getClicked() {
+        return clicked;
+    }
+
+    public void setClicked() {
+        this.clicked++;
     }
 }

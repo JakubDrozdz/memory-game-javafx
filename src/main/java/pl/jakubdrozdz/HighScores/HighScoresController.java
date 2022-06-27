@@ -39,6 +39,7 @@ public class HighScoresController implements IBasicController {
         highScoresView.firstTriesCol.setCellValueFactory(new PropertyValueFactory<>("firstTries"));
         highScoresView.totalCol.setCellValueFactory(new PropertyValueFactory<>("total"));
         highScoresView.table.getColumns().addAll(highScoresView.nameCol,highScoresView.pointsCol,highScoresView.firstTriesCol,highScoresView.totalCol);
+        highScoresModel.sort(playersList);
         for (int i = 1; i < playersList.length; i++) {
             highScoresView.table.getItems().add(new Player(playersList[i][0],Double.parseDouble(playersList[i][1]),Integer.parseInt(playersList[i][2]),Double.parseDouble(playersList[i][3])));
         }

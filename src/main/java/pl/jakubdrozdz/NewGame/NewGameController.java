@@ -35,11 +35,17 @@ public class NewGameController implements IBasicController {
     int pairsLeft;
     Stage stage;
     Scene homeScene;
+    int firstTries;
 
     public NewGameController(Stage stage, Scene homeScene,int dim1, int dim2) {
+        this.firstTries=0;
+        this.stage = stage;
+        this.homeScene = homeScene;
+        this.stage.setWidth(600);
+        this.stage.setHeight(600);
         newGameView = new NewGameView(stage,homeScene);
         newGameModel=new NewGameModel(textTime,dim1,dim2);
-        newGameView.setScene(stage);
+        //newGameView.setScene(stage);
         buttonsController(stage,homeScene);
         newGameView.menu.getChildren().add(textTime);
         setUpBoard();
@@ -47,8 +53,7 @@ public class NewGameController implements IBasicController {
         setActions();
         monitor.start();
         runBoardChecks.start();
-        this.stage = stage;
-        this.homeScene = homeScene;
+
 
         newGameView.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             final KeyCombination keyComb = new KeyCodeCombination(KeyCode.C, KeyCodeCombination.CONTROL_DOWN, KeyCodeCombination.SHIFT_DOWN);
@@ -77,6 +82,8 @@ public class NewGameController implements IBasicController {
             public void handle(ActionEvent actionEvent) {
                 stage.setScene(homeScene);
                 stage.setTitle("Memory Game");
+                stage.setHeight(480);
+                stage.setWidth(640);
                 stop();
             }
         });
@@ -131,6 +138,9 @@ public class NewGameController implements IBasicController {
                                     }
                                     else{
                                         System.out.println("change");
+                                        if(c1.getClicked() == 1 && c2.getClicked() == 1){
+                                            firstTries++;
+                                        }
                                         pairsLeft--;
                                     }
                                     setActions();
@@ -154,6 +164,12 @@ public class NewGameController implements IBasicController {
     private volatile boolean monitorEnd = false;
     Thread monitor = new Thread(
             ()->{
+                Platform.runLater(
+                        ()->{
+                            this.stage.setWidth(newGameModel.dim1*120+100);
+                            this.stage.setHeight(newGameModel.dim2*120+250);
+                        }
+                );
                 while(!monitorEnd){
                     Platform.runLater(
                             ()->{
@@ -168,13 +184,14 @@ public class NewGameController implements IBasicController {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
+                        System.out.println("Monitor stopped");
                     }
                 }
                 newGameView.save.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         stop();
-                        new SaveScoreController(stage,homeScene,((newGameModel.dim1*newGameModel.dim2)*100/Double.parseDouble(textTime.getText())));
+                        new SaveScoreController(stage,homeScene,((newGameModel.dim1*newGameModel.dim2)*100/Double.parseDouble(textTime.getText())),firstTries);
                     }
                 });
             }
@@ -235,6 +252,7 @@ public class NewGameController implements IBasicController {
     public void changeImage(int i, int j){
         newGameModel.boardButtons.get(i).get(j).setGraphic(newGameModel.boardButtons.get(i).get(j).getView());
         newGameModel.boardButtons.get(i).get(j).setReversed(true);
+        newGameModel.boardButtons.get(i).get(j).setClicked();
         c2=c1;
         c1=newGameModel.boardButtons.get(i).get(j);
         clicked++;

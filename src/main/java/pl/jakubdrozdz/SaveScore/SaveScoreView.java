@@ -26,16 +26,14 @@ public class SaveScoreView implements IBasicWindow {
     Scene homeScene;
     Label name;
     Label score;
-    double points;
-    Label firstTries;
+    Label firstTriesLabel;
     TextField nameField;
     Button save;
     Stage stage;
-    public SaveScoreView(Stage stage, Scene homeScene, double points) {
+    public SaveScoreView(Stage stage, Scene homeScene) {
         this.stage = stage;
         basicSetUp(homeScene);
         stage.setTitle("Save result");
-        this.points = points;
         rowSetup();
         save = new Button("Save result");
         menu.getChildren().add(save);
@@ -69,15 +67,14 @@ public class SaveScoreView implements IBasicWindow {
         menu.getChildren().add(r3);
 
         name = new Label("Enter player name:");
-        String s = "Score " + points;
-        this.score = new Label(s);
-        firstTries = new Label("First tries 0");
+        this.score = new Label();
+        this.firstTriesLabel = new Label();
         name.setPadding(new Insets(10));
         this.score.setPadding(new Insets(10));
-        firstTries.setPadding(new Insets(10));
+        firstTriesLabel.setPadding(new Insets(10));
         r1.getChildren().add(name);
         r2.getChildren().add(this.score);
-        r3.getChildren().add(firstTries);
+        r3.getChildren().add(firstTriesLabel);
         nameField = new TextField();
         r1.getChildren().add(nameField);
     }
