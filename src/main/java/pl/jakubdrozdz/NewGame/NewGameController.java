@@ -7,6 +7,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -45,13 +49,23 @@ public class NewGameController implements IBasicController {
         runBoardChecks.start();
         this.stage = stage;
         this.homeScene = homeScene;
-        //boardChecks.start();
+
+        newGameView.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            final KeyCombination keyComb = new KeyCodeCombination(KeyCode.C, KeyCodeCombination.CONTROL_DOWN, KeyCodeCombination.SHIFT_DOWN);
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyComb.match(keyEvent)) {
+                    stop();
+                    stage.setScene(homeScene);
+                    stage.setTitle("Memory Game");
+                    keyEvent.consume();
+                }
+            }
+        });
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
-                newGameModel.interrupt();
-                threadEnd = true;
-                runBoardChecks.interrupt();
+                stop();
             }
         });
 
@@ -63,9 +77,7 @@ public class NewGameController implements IBasicController {
             public void handle(ActionEvent actionEvent) {
                 stage.setScene(homeScene);
                 stage.setTitle("Memory Game");
-                newGameModel.interrupt();
-                threadEnd = true;
-                runBoardChecks.interrupt();
+                stop();
             }
         });
 
@@ -133,7 +145,7 @@ public class NewGameController implements IBasicController {
                     } catch (InterruptedException e) {
                         e=new InterruptedException("Game stopped");
                         System.out.println(e.getMessage());
-                        monitorEnd = true;
+                        stop();
                     }
                 }
             }
@@ -161,11 +173,7 @@ public class NewGameController implements IBasicController {
                 newGameView.save.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        newGameModel.interrupt();
-                        stopActions();
-                        threadEnd = true;
-                        runBoardChecks.interrupt();
-                        monitor.interrupt();
+                        stop();
                         new SaveScoreController(stage,homeScene,((newGameModel.dim1*newGameModel.dim2)*100/Double.parseDouble(textTime.getText())));
                     }
                 });
@@ -230,6 +238,14 @@ public class NewGameController implements IBasicController {
         c2=c1;
         c1=newGameModel.boardButtons.get(i).get(j);
         clicked++;
+    }
+    public void stop(){
+        newGameModel.interrupt();
+        threadEnd = true;
+        runBoardChecks.interrupt();
+        monitorEnd = true;
+        stopActions();
+        monitor.interrupt();
     }
 
 }

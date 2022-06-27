@@ -17,6 +17,7 @@ public class NewGameView implements IBasicWindow {
     StackPane sp;
     Button save;
     GridPane board;
+    Scene scene;
     public NewGameView(Stage stage, Scene scene) {
         basicSetUp(scene);
         save = new Button("Save score");
@@ -39,7 +40,8 @@ public class NewGameView implements IBasicWindow {
     public void setScene(Stage stage) {
         sp = new StackPane(menu);
         sp.setPadding(new Insets(20));
-        stage.setScene(new Scene(sp,600,200));
+        scene = new Scene(sp,600,200);
+        stage.setScene(scene);
         stage.setTitle("Game");
     }
 }
