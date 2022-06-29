@@ -45,7 +45,6 @@ public class NewGameController implements IBasicController {
         this.stage.setHeight(600);
         newGameView = new NewGameView(stage,homeScene);
         newGameModel=new NewGameModel(textTime,dim1,dim2);
-        //newGameView.setScene(stage);
         buttonsController(stage,homeScene);
         newGameView.menu.getChildren().add(textTime);
         setUpBoard();
@@ -53,8 +52,6 @@ public class NewGameController implements IBasicController {
         setActions();
         monitor.start();
         runBoardChecks.start();
-
-
         newGameView.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             final KeyCombination keyComb = new KeyCodeCombination(KeyCode.C, KeyCodeCombination.CONTROL_DOWN, KeyCodeCombination.SHIFT_DOWN);
             @Override
@@ -122,22 +119,18 @@ public class NewGameController implements IBasicController {
                                             e.printStackTrace();
                                         }
                                         Image img1 = new Image(stream);
-                                        Image img2 = new Image(stream);
                                         ImageView view1 = new ImageView(img1);
                                         ImageView view2 = new ImageView(img1);
                                         view1.setFitHeight(120);
                                         view2.setFitHeight(120);
                                         view1.setFitWidth(120);
                                         view2.setFitWidth(120);
-                                        c1.setImageName("back");
                                         c1.setGraphic(view1);
                                         c1.setReversed(false);
-                                        c2.setImageName("back");
                                         c2.setGraphic(view2);
                                         c2.setReversed(false);
                                     }
                                     else{
-                                        System.out.println("change");
                                         if(c1.getClicked() == 1 && c2.getClicked() == 1){
                                             firstTries++;
                                         }
@@ -151,7 +144,7 @@ public class NewGameController implements IBasicController {
                             }
                     );
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e=new InterruptedException("Game stopped");
                         System.out.println(e.getMessage());
@@ -207,6 +200,12 @@ public class NewGameController implements IBasicController {
                     newGameModel.boardButtons.get(i).get(j).setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent actionEvent) {
+                            newGameModel.boardButtons.get(finalI).get(finalJ).setOnAction(new EventHandler<ActionEvent>() {
+                                @Override
+                                public void handle(ActionEvent actionEvent) {
+
+                                }
+                            });
                             changeImage(finalI, finalJ);
                         }
                     });
