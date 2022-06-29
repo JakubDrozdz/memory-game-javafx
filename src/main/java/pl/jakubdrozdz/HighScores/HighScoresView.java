@@ -38,6 +38,7 @@ public class HighScoresView implements IBasicWindow {
         menu.getChildren().add(panel);
 
         table = new TableView<Player>();
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         panel.getChildren().add(table);
         nameCol = new TableColumn<>("Name");
         pointsCol = new TableColumn<>("Points");

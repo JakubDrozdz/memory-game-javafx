@@ -3,7 +3,6 @@ package pl.jakubdrozdz.SaveScore;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicController;
 
