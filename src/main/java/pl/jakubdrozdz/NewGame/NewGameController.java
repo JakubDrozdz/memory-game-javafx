@@ -26,7 +26,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class NewGameController implements IBasicController {
-    Text textTime = new Text();
+    //Text textTime = new Text();
     NewGameModel newGameModel;
     NewGameView newGameView;
     int clicked = 0;
@@ -44,9 +44,8 @@ public class NewGameController implements IBasicController {
         this.stage.setWidth(600);
         this.stage.setHeight(600);
         newGameView = new NewGameView(stage,homeScene);
-        newGameModel=new NewGameModel(textTime,dim1,dim2);
+        newGameModel=new NewGameModel(newGameView.textTime,dim1,dim2);
         buttonsController(stage,homeScene);
-        newGameView.menu.getChildren().add(textTime);
         setUpBoard();
         setPairs();
         setActions();
@@ -184,7 +183,7 @@ public class NewGameController implements IBasicController {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         stop();
-                        new SaveScoreController(stage,homeScene,((newGameModel.dim1*newGameModel.dim2)*100/Double.parseDouble(textTime.getText())),firstTries);
+                        new SaveScoreController(stage,homeScene,((newGameModel.dim1*newGameModel.dim2)*100/Double.parseDouble(newGameView.textTime.getText())),firstTries);
                     }
                 });
             }

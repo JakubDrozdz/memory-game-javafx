@@ -1,6 +1,7 @@
 package pl.jakubdrozdz.NewGame;
 
 import javafx.application.Platform;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import pl.jakubdrozdz.Card;
 import java.time.Duration;
