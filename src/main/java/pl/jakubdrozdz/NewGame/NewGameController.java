@@ -160,8 +160,8 @@ public class NewGameController implements IBasicController {
             ()->{
                 Platform.runLater(
                         ()->{
-                            this.stage.setWidth(newGameModel.dim1*120+100);
-                            this.stage.setHeight(newGameModel.dim2*120+250);
+                            this.stage.setWidth(newGameModel.dim1*120+300);
+                            this.stage.setHeight(newGameModel.dim2*120+300);
                         }
                 );
                 while(!monitorEnd){

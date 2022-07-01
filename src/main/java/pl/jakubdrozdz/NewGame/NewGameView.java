@@ -5,9 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -20,14 +20,14 @@ public class NewGameView implements IBasicWindow {
     VBox menu;
     Button btn;
     Scene homeScene;
-    StackPane sp;
-    StackPane spTmp;
+    ScrollPane spTmp;
     Button save;
     GridPane board;
     Scene scene;
     Text textTime;
     HBox time;
     Label timeLabel;
+    ScrollPane scrollPane;
     public NewGameView(Stage stage, Scene scene) {
         basicSetUp(scene);
         save = new Button("Save score");
@@ -41,6 +41,10 @@ public class NewGameView implements IBasicWindow {
         menu.getChildren().add(save);
         menu.getChildren().add(time);
         menu.getChildren().add(board);
+        scrollPane = new ScrollPane(menu);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPadding(new Insets(20));
         setScene(stage);
     }
 
@@ -59,10 +63,8 @@ public class NewGameView implements IBasicWindow {
 
     @Override
     public void setScene(Stage stage) {
-        sp = new StackPane(menu);
-        sp.setPadding(new Insets(20));
-        spTmp = sp;
-        scene = new Scene(sp,600,400);
+        spTmp = scrollPane;
+        scene = new Scene(scrollPane,600,400);
         stage.setScene(scene);
         stage.setTitle("Game");
     }
