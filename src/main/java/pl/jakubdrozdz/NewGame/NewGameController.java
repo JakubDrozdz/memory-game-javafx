@@ -59,6 +59,8 @@ public class NewGameController implements IBasicController {
                     stop();
                     stage.setScene(homeScene);
                     stage.setTitle("Memory Game");
+                    stage.setHeight(480);
+                    stage.setWidth(640);
                     keyEvent.consume();
                 }
             }
