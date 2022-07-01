@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -26,15 +29,19 @@ public class HomeScreenView {
     public HomeScreenView(Stage stage) {
         this.stage=stage;
         label = new Label("Memory Game");
+        label.setFont(Font.font("arial",FontWeight.BOLD, FontPosture.REGULAR, 32));
         menu = new VBox();
         menu.setAlignment(Pos.CENTER);
         menu.setSpacing(20);
         menu.getChildren().add(label);
         newGame = new Button("New Game");
+        newGame.setFont(Font.font("arial",FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(newGame);
         highScores = new Button("High Scores");
+        highScores.setFont(Font.font("arial",FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(highScores);
         exit = new Button("Exit");
+        exit.setFont(Font.font("arial",FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(exit);
 
         sp = new StackPane();

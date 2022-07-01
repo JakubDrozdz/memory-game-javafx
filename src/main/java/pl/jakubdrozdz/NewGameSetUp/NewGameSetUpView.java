@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
 
@@ -34,12 +37,15 @@ public class NewGameSetUpView implements IBasicWindow {
         fields.setSpacing(10);
         fields.setAlignment(Pos.CENTER);
         l = new Label("Enter dimension");
+        l.setFont(Font.font("arial",FontWeight.BOLD, FontPosture.REGULAR, 32));
         l.setMaxWidth(300);
         l.setAlignment(Pos.CENTER);
         l.setWrapText(true);
         l.setMaxHeight(250);
         tf1 = new TextField();
+        tf1.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         tf2 = new TextField();
+        tf2.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
 
         fields.getChildren().add(tf1);
         fields.getChildren().add(tf2);
@@ -48,6 +54,7 @@ public class NewGameSetUpView implements IBasicWindow {
         panel.getChildren().add(fields);
 
         setDimension = new Button("Start game");
+        setDimension.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         panel.getChildren().add(setDimension);
 
         menu.getChildren().add(panel);
@@ -59,6 +66,7 @@ public class NewGameSetUpView implements IBasicWindow {
         menu = new VBox();
         menu.setAlignment(Pos.TOP_LEFT);
         btn = new Button("Back to menu");
+        btn.setFont(Font.font("arial",FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(btn);
         menu.setSpacing(20);
     }

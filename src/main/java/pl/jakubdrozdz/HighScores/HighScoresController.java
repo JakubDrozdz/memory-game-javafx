@@ -19,6 +19,7 @@ public class HighScoresController implements IBasicController {
         highScoresModel = new HighScoresModel();
         highScoresView.setScene(stage);
         playersList = highScoresModel.readFile();
+
         buttonsController(stage,homeScene);
         loadValues();
     }

@@ -30,7 +30,7 @@ public class HomeScreenController implements IBasicController {
         });
         HomeScreenView.highScores.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent actionEvent) { new HighScoresController(stage,scene); }
+            public void handle(ActionEvent actionEvent) { new HighScoresController(stage,scene);}
         });
         HomeScreenView.exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override

@@ -8,11 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
 import pl.jakubdrozdz.Player;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class HighScoresView implements IBasicWindow {
     Scene homeScene;
@@ -32,6 +39,7 @@ public class HighScoresView implements IBasicWindow {
         panel = new VBox();
         panel.setAlignment(Pos.CENTER);
         label = new Label("Leaderboard");
+        label.setFont(Font.font("arial",FontWeight.BOLD, FontPosture.REGULAR, 32));
         label.setAlignment(Pos.CENTER);
         panel.getChildren().add(label);
         panel.setSpacing(15);
@@ -46,6 +54,10 @@ public class HighScoresView implements IBasicWindow {
         totalCol = new TableColumn<>("Total");
 
         setScene(stage);
+        stage.setHeight(400);
+
+
+
     }
 
     @Override
@@ -54,6 +66,7 @@ public class HighScoresView implements IBasicWindow {
         menu = new VBox();
         menu.setAlignment(Pos.TOP_LEFT);
         btn = new Button("Back to menu");
+        btn.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(btn);
         menu.setSpacing(20);
     }

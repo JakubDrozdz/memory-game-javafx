@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.HomeScreen.HomeScreenView;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
@@ -36,8 +39,9 @@ public class SaveScoreView implements IBasicWindow {
         stage.setTitle("Save result");
         rowSetup();
         save = new Button("Save result");
+        save.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(save);
-
+        stage.setWidth(450);
         setScene(stage);
     }
 
@@ -67,15 +71,19 @@ public class SaveScoreView implements IBasicWindow {
         menu.getChildren().add(r3);
 
         name = new Label("Enter player name:");
-        this.score = new Label();
-        this.firstTriesLabel = new Label();
+        name.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        score = new Label();
+        score.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        firstTriesLabel = new Label();
+        firstTriesLabel.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         name.setPadding(new Insets(10));
-        this.score.setPadding(new Insets(10));
+        score.setPadding(new Insets(10));
         firstTriesLabel.setPadding(new Insets(10));
         r1.getChildren().add(name);
         r2.getChildren().add(this.score);
         r3.getChildren().add(firstTriesLabel);
         nameField = new TextField();
+        nameField.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         r1.getChildren().add(nameField);
     }
 }

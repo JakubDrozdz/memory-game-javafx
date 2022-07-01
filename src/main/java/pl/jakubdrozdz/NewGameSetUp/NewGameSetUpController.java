@@ -15,6 +15,7 @@ public class NewGameSetUpController implements IBasicController {
         newGameSetUpView = new NewGameSetUpView(stage,homeScene);
         newGameSetUpModel = new NewGameSetUpModel();
         newGameSetUpView.setScene(stage);
+        stage.setHeight(280);
         buttonsController(stage,homeScene);
     }
 
@@ -40,7 +41,7 @@ public class NewGameSetUpController implements IBasicController {
                     new NewGameController(stage,homeScene, newGameSetUpModel.v1,newGameSetUpModel.v2);
                 }
                 newGameSetUpView.l.setText(res);
-                stage.setHeight(250);
+                //stage.setHeight(250);
             }
         });
     }

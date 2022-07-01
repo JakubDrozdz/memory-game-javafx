@@ -9,6 +9,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicWindow;
@@ -24,11 +27,17 @@ public class NewGameView implements IBasicWindow {
     Scene scene;
     Text textTime;
     HBox time;
+    Label timeLabel;
     public NewGameView(Stage stage, Scene scene) {
         basicSetUp(scene);
         save = new Button("Save score");
+        save.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         textTime = new Text();
-        time = new HBox(new Label("Time (seconds): "),textTime);
+        textTime.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        timeLabel = new Label("Time (seconds): ");
+        timeLabel.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
+        time = new HBox(timeLabel,textTime);
+        time.setAlignment(Pos.CENTER);
         menu.getChildren().add(save);
         menu.getChildren().add(time);
         menu.getChildren().add(board);
@@ -39,11 +48,13 @@ public class NewGameView implements IBasicWindow {
     public void basicSetUp(Scene scene) {
         homeScene = scene;
         menu = new VBox();
-        menu.setAlignment(Pos.TOP_LEFT);
+        menu.setAlignment(Pos.CENTER);
         btn = new Button("Back to menu");
+        btn.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
         menu.getChildren().add(btn);
         menu.setSpacing(20);
         board=new GridPane();
+        board.setAlignment(Pos.CENTER);
     }
 
     @Override
