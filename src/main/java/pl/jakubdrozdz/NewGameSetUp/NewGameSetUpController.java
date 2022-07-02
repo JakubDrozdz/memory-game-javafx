@@ -3,6 +3,9 @@ package pl.jakubdrozdz.NewGameSetUp;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import pl.jakubdrozdz.Interfaces.IBasicController;
 import pl.jakubdrozdz.NewGame.NewGameController;
@@ -41,6 +44,7 @@ public class NewGameSetUpController implements IBasicController {
                     new NewGameController(stage,homeScene, newGameSetUpModel.v1,newGameSetUpModel.v2);
                 }
                 newGameSetUpView.l.setText(res);
+                newGameSetUpView.l.setFont(Font.font("arial", FontWeight.NORMAL, FontPosture.REGULAR, 16));
                 //stage.setHeight(250);
             }
         });
